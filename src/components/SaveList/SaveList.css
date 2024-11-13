@@ -1,0 +1,76 @@
+.save-list {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	max-width: 90%;
+	max-height: 90%;
+	overflow-y: auto;
+	pointer-events: auto;
+	border: 1px solid #888;
+	padding: 12px;
+	color: #fff;
+	font-size: 18px;
+	text-align: center;
+	background: #000;
+}
+
+.save-list__button {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid #fff;
+	background: #000;
+	font-size: 2em;
+	padding: 4px 18px;
+	cursor: pointer;
+	margin-top: 6px;
+	width: 8em;
+}
+
+.save-list__button:hover {
+	background-color: #111;
+}
+
+.save-list__items {
+	border: 1px solid #fff;
+	text-align: left;
+}
+
+.save-list__item {
+	padding: 0 6px;
+	display: flex;
+	gap: 4px;
+	justify-content: space-between;
+}
+
+.save-list__player-info {
+	color: #888;
+	overflow-wrap: break-word;
+}
+
+.save-list__buttons {
+	display: flex;
+}
+
+.save-list__button--remove {
+	color: #800;
+	cursor: pointer;
+}
+
+.save-list__button--remove:hover {
+	color: #f00;
+}
+
+.save-list__button--download {
+	color: #888;
+	cursor: pointer;
+}
+
+.save-list__button--download:hover {
+	color: #fff;
+}
+
+.save-list__item:hover {
+	background-color: #444;
+}

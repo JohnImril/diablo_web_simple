@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg version="1.1" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<path id="a" d="m439.52 108.04c37.54 0 67.98 30.43 67.98 67.98v243.55c0 42.23-34.24 76.47-76.47 76.47h-227.01c-39.5 0-71.52-32.02-71.52-71.52v-241.43c0-41.45 33.6-75.05 75.05-75.05h231.97z"/>
+<clipPath id="c">
+<use xlink:href="#a"/>
+</clipPath>
+<path id="b" d="m366 349.57-84-81.53-84 81.53h53.25v66.47h61.64v-66.47h53.11z"/>
+</defs>
+<g clip-path="url(#c)">
+<use fill-opacity="0" stroke="#000000" stroke-width="52" xlink:href="#a"/>
+</g>
+<use fill="#000000" xlink:href="#b"/>
+</svg>

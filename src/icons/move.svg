@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg version="1.1" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<path id="b" d="m326.88 298.88c-12.13 0-21.96-9.84-21.96-21.97v-37.77c0-12.13 9.83-21.97 21.96-21.97 12.14 0 21.97 9.84 21.97 21.97v37.77c-6.55 14.65-13.88 21.97-21.97 21.97z"/>
+<path id="d" d="m360.46 232.22v52.38c0 12.33-8.08 22.95-19.7 27.74v28.16h113.31v-94.57c0-53.56-44.87-96.97-100.21-96.97h-13.1v55.52c13.13 10.27 19.7 19.52 19.7 27.74z"/>
+<path id="c" d="m199.7 421.97c0 53.56 44.87 96.97 100.21 96.97h53.95c55.34 0 100.21-43.41 100.21-96.97v-73.38h-254.37v73.38z"/>
+<path id="a" d="m313.01 312.34c-11.62-4.79-19.7-15.41-19.7-27.74v-52.38c0-12.33 8.08-22.95 19.7-27.74v-55.52h-13.1c-55.34 0-100.21 43.41-100.21 96.97v94.57h113.31v-28.16z"/>
+<path id="f" d="m494.43 269.5 68.92 71-68.92 71v-45.01h-32.51v-52.1h32.51v-44.89z"/>
+<path id="e" d="m158.97 269.5-68.91 71 68.91 71v-45.01h32.52v-52.1h-32.52v-44.89z"/>
+<path id="h" d="m397.89 110.9-71.01-68.91-71 68.91h45.02v32.52h52.09v-32.52h44.9z"/>
+<path id="g" d="m397.41 556.21-71 68.92-71-68.92h45.01v-32.51h52.1v32.51h44.89z"/>
+</defs>
+<use fill="#020202" xlink:href="#b"/>
+<use fill-opacity="0" stroke="#000000" stroke-opacity="0" xlink:href="#b"/>
+<use fill="#020202" xlink:href="#d"/>
+<use fill-opacity="0" stroke="#000000" stroke-opacity="0" xlink:href="#d"/>
+<use fill="#020202" xlink:href="#c"/>
+<use fill-opacity="0" stroke="#000000" stroke-opacity="0" xlink:href="#c"/>
+<use fill="#020202" xlink:href="#a"/>
+<use fill-opacity="0" stroke="#000000" stroke-opacity="0" xlink:href="#a"/>
+<use fill="#000000" xlink:href="#f"/>
+<use fill="#000000" xlink:href="#e"/>
+<use fill="#000000" xlink:href="#h"/>
+<use fill="#000000" xlink:href="#g"/>
+</svg>
