@@ -62,7 +62,9 @@ function testOffscreen() {
 
 async function do_load_game(api: IApi, audio: IAudioApi, mpq: File | null, spawn: boolean) {
 	const fs = await api.fs;
-	await load_diabdat(api, fs);
+	if (spawn && !mpq) {
+		await load_diabdat(api, fs);
+	}
 
 	let context: CanvasRenderingContext2D | ImageBitmapRenderingContext | null = null;
 	let offscreen = false;

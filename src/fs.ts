@@ -52,7 +52,7 @@ export default async function create_fs(): Promise<IFileSystem> {
 			throw new Error("IndexedDB is not supported in this browser.");
 		}
 
-		const db = await openDB("diablo_fs", 2, {
+		const db = await openDB("diablo_fs_simple", 2, {
 			upgrade(db, oldVersion) {
 				if (oldVersion < 1) {
 					db.createObjectStore("files");
