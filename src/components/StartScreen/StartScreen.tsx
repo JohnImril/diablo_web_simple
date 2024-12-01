@@ -3,10 +3,8 @@ import { IPlayerInfo } from "../../types";
 import "./StartScreen.css";
 
 const StartScreen: React.FC<{
-	hasSpawn: boolean;
 	start: (file?: File | null) => void;
 	saveNames: boolean | Record<string, IPlayerInfo | null>;
-	setCompress: React.Dispatch<React.SetStateAction<boolean>>;
 	setShowSaves: React.Dispatch<React.SetStateAction<boolean>>;
 	updateSaves: () => Promise<void>;
 }> = ({ start, saveNames, setShowSaves, updateSaves }) => {
