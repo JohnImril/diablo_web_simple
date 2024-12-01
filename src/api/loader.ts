@@ -63,7 +63,7 @@ function testOffscreen() {
 async function do_load_game(api: IApi, audio: IAudioApi, mpq: File | null, spawn: boolean) {
 	const fs = await api.fs;
 
-	if (!navigator.userAgent.includes("Firefox")) await load_diabdat(api, fs); //fix this
+	await load_diabdat(api, fs);
 
 	let context: CanvasRenderingContext2D | ImageBitmapRenderingContext | null = null;
 	let offscreen = false;

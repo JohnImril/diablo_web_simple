@@ -5,7 +5,6 @@ import Peer from "peerjs";
 
 import getPlayerName from "./api/savefile";
 import load_game from "./api/loader";
-import { SpawnSizes } from "./api/load_spawn";
 import create_fs from "./fs";
 import { reportLink, isDropFile, getDropFile, findKeyboardRule } from "./utils";
 import CompressMpq from "./mpqcmp/CompressMpq";
@@ -34,7 +33,6 @@ const App: React.FC = () => {
 	const [started, setStarted] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [dropping, setDropping] = useState(0);
-	const [hasSpawn, setHasSpawn] = useState(false);
 	const [error, setError] = useState<IError | undefined>(undefined);
 	const [progress, setProgress] = useState<IProgress | undefined>(undefined);
 	const [saveNames, setSaveNames] = useState<boolean | Record<string, IPlayerInfo | null>>(false);
@@ -607,10 +605,6 @@ const App: React.FC = () => {
 		document.addEventListener("dragleave", handleDragLeave, true);
 
 		fs.current.then((fsInstance) => {
-			const spawn = fsInstance.files.get("spawn.mpq");
-			if (spawn && SpawnSizes.includes(spawn.byteLength)) {
-				setHasSpawn(true);
-			}
 			if ([...fsInstance.files.keys()].some((name) => /\.sv$/i.test(name))) {
 				setSaveNames(true);
 			}
@@ -736,10 +730,8 @@ const App: React.FC = () => {
 				{loading && !started && !error && <LoadingComponent title="Loading..." progress={progress} />}
 				{!started && !compress && !loading && !error && !showSaves && (
 					<StartScreen
-						hasSpawn={hasSpawn}
 						start={start}
 						saveNames={saveNames}
-						setCompress={setCompress}
 						setShowSaves={setShowSaves}
 						updateSaves={updateSaves}
 					/>
