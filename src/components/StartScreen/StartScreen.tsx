@@ -27,6 +27,9 @@ const StartScreen: React.FC<{
 					Manage Saves
 				</div>
 			)}
+			<a className="start-screen__manual-link" href="/D1_manual_en.pdf" target="_blank" rel="noopener noreferrer">
+				View Manual
+			</a>
 		</div>
 	);
 };
