@@ -36,9 +36,10 @@
 	background-color: #111;
 }
 
-.start-screen__compress-link {
+.start-screen__manual-link {
 	display: inline-block;
 	color: rgb(112, 112, 255);
 	text-decoration: none;
 	cursor: pointer;
+	margin-top: 15px;
 }
