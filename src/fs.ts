@@ -3,6 +3,15 @@ import { IFileSystem } from "./types";
 
 const CHUNK_SIZE = 5 * 1024 * 1024;
 
+// async function deleteDatabase() {
+// 	try {
+// 		await indexedDB.deleteDatabase("diablo_fs_simple");
+// 		console.log("IndexedDB deleted.");
+// 	} catch (e) {
+// 		console.error("Failed to delete IndexedDB:", e);
+// 	}
+// }
+
 export async function downloadFile(db: IDBPDatabase<unknown>, name: string) {
 	try {
 		const fileName = name.toLowerCase();
@@ -85,9 +94,18 @@ async function downloadFileChunks(db: IDBPDatabase<unknown>, fileName: string): 
 		const chunkKey = `${fileName}_chunk_${i}`;
 		const chunk = await db.get("files", chunkKey);
 		if (!chunk) throw new Error(`Chunk ${i} of file ${fileName} is missing.`);
-		chunks.push(chunk);
+		chunks.push(new Uint8Array(chunk));
 	}
-	return new Uint8Array(chunks.flat());
+
+	const totalLength = chunks.reduce((sum, chunk) => sum + chunk.length, 0);
+	const data = new Uint8Array(totalLength);
+	let offset = 0;
+	for (const chunk of chunks) {
+		data.set(chunk, offset);
+		offset += chunk.length;
+	}
+
+	return data;
 }
 
 export default async function create_fs(): Promise<IFileSystem> {
@@ -111,11 +129,21 @@ export default async function create_fs(): Promise<IFileSystem> {
 		const files = new Map<string, Uint8Array>();
 
 		const keys = await db.getAllKeys("files");
+		const fileNames = new Set<string>();
+
 		for (const key of keys) {
-			if (!(key as string).endsWith("_metadata") && !(key as string).includes("_chunk_")) {
-				const value = await downloadFileChunks(db, key as string);
-				files.set(key as string, value);
+			const keyStr = key as string;
+			if (keyStr.endsWith("_metadata")) {
+				const baseFileName = keyStr.slice(0, -"_metadata".length);
+				fileNames.add(baseFileName);
+			} else if (!keyStr.includes("_chunk_")) {
+				fileNames.add(keyStr);
 			}
+		}
+
+		for (const fileName of fileNames) {
+			const value = await downloadFileChunks(db, fileName);
+			files.set(fileName, value);
 		}
 
 		window.DownloadFile = (name: string) => downloadFile(db, name);
@@ -127,16 +155,17 @@ export default async function create_fs(): Promise<IFileSystem> {
 				await uploadFileChunks(db, files, new File([data], name));
 			},
 			delete: async (name: string) => {
-				const metadata = await db.get("files", `${name}_metadata`);
+				const fileName = name.toLowerCase();
+				const metadata = await db.get("files", `${fileName}_metadata`);
 				if (metadata && metadata.chunks) {
 					for (let i = 0; i < metadata.chunks; i++) {
-						await db.delete("files", `${name}_chunk_${i}`);
+						await db.delete("files", `${fileName}_chunk_${i}`);
 					}
-					await db.delete("files", `${name}_metadata`);
+					await db.delete("files", `${fileName}_metadata`);
 				} else {
-					await db.delete("files", name);
+					await db.delete("files", fileName);
 				}
-				files.delete(name);
+				files.delete(fileName);
 			},
 			clear: async () => {
 				await db.clear("files");
