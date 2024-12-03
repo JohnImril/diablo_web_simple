@@ -40,6 +40,7 @@ const App: React.FC = () => {
 	const [compress, setCompress] = useState(false);
 	const [compressFile, setCompressFile] = useState<File | null>(null);
 	const [retail, setRetail] = useState<boolean | undefined>(undefined);
+	const [isWide, setIsWide] = useState(false);
 
 	const cursorPos = useRef({ x: 0, y: 0 });
 	const touchControls = useRef(false);
@@ -62,6 +63,19 @@ const App: React.FC = () => {
 	const panPos = useRef<{ x: number; y: number } | undefined>(undefined);
 	const touchButton = useRef<ITouchOther | null>(null);
 	const touchCanvas = useRef<{ clientX: number; clientY: number } | null>(null);
+
+	useEffect(() => {
+		const handleKeyDown = (event: KeyboardEvent) => {
+			if (event.key === "F9") {
+				setIsWide((prevIsWide) => !prevIsWide);
+			}
+		};
+
+		document.addEventListener("keydown", handleKeyDown);
+		return () => {
+			document.removeEventListener("keydown", handleKeyDown);
+		};
+	}, []);
 
 	const onError = async (message: string, stack?: string) => {
 		const errorObject: IError = { message };
@@ -686,8 +700,18 @@ const App: React.FC = () => {
 					);
 				})}
 			</div>
-			<div className="app__body">
-				<div className="app__inner">
+			<div
+				className={classNames("app__body", {
+					"app__body--wide": isWide,
+					"app__body--narrow": !isWide,
+				})}
+			>
+				<div
+					className={classNames("app__inner", {
+						"app__inner--wide": isWide,
+						"app__inner--narrow": !isWide,
+					})}
+				>
 					{!error && <canvas ref={canvasRef} width={640} height={480} />}
 					<input
 						type="text"
