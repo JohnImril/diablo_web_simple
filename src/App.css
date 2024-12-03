@@ -19,9 +19,9 @@ body,
 
 .app__body,
 .app__body-v {
-	position: absolute;
+	/* position: absolute;
 	top: 0;
-	bottom: 0;
+	bottom: 0; */
 	height: auto;
 	/* left: calc(50% - 200vh / 3);
 	width: calc(400vh / 3); */

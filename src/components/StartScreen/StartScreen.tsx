@@ -1,5 +1,5 @@
 import { IPlayerInfo } from "../../types";
-import manual from "../../../public/D1_manual_en.pdf";
+import manual from "../../assets/D1_manual_en.pdf";
 
 import "./StartScreen.css";
 
