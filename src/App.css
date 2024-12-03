@@ -23,8 +23,8 @@ body,
 	top: 0;
 	bottom: 0;
 	height: auto;
-	left: calc(50% - 200vh / 3);
-	width: calc(400vh / 3);
+	/* left: calc(50% - 200vh / 3);
+	width: calc(400vh / 3); */
 }
 
 .app__body .app__inner {
@@ -413,4 +413,22 @@ body,
 	.app__touch-ui {
 		height: 35vw;
 	}
+}
+
+.app__inner--wide {
+	width: 100vw;
+	height: 100vh;
+}
+
+.app__inner--narrow {
+	width: calc(400vh / 3);
+	max-height: calc(75vw * 0.75);
+}
+
+.app__body--wide {
+	left: 0;
+}
+
+.app__body--narrow {
+	left: calc(50% - 200vh / 3);
 }
