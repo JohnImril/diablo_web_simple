@@ -5,17 +5,17 @@ import { VitePWA } from "vite-plugin-pwa";
 import packageJson from "./package.json";
 
 export default defineConfig({
-	base: "./",
+	base: "/diablo_web_simple/",
 	plugins: [
 		react(),
 		wasm(),
 		VitePWA({
-			base: "./",
+			base: "/diablo_web_simple/",
 			registerType: "autoUpdate",
 			workbox: {
 				runtimeCaching: [
 					{
-						urlPattern: new RegExp("./.*\\.(?:html|css|js|wasm)$"),
+						urlPattern: new RegExp("/.*\\.(?:html|css|js|wasm|pdf)$"),
 						handler: "CacheFirst",
 						options: {
 							cacheName: "static-resources",
@@ -26,12 +26,9 @@ export default defineConfig({
 						},
 					},
 				],
-				navigateFallback: "./index.html",
+				navigateFallback: "/diablo_web_simple/index.html",
 				navigateFallbackAllowlist: [/^(?!\/__).*/],
 				maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
-			},
-			devOptions: {
-				enabled: true,
 			},
 		}),
 	],
