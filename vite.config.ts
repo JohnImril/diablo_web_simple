@@ -15,7 +15,18 @@ export default defineConfig({
 			workbox: {
 				runtimeCaching: [
 					{
-						urlPattern: new RegExp("/.*\\.(?:html|css|js|wasm|pdf)$"),
+						urlPattern: /.*\.pdf$/,
+						handler: "NetworkFirst",
+						options: {
+							cacheName: "pdf-cache",
+							expiration: {
+								maxEntries: 5,
+								maxAgeSeconds: 7 * 24 * 60 * 60,
+							},
+						},
+					},
+					{
+						urlPattern: new RegExp("/.*\\.(?:html|css|js|wasm)$"),
 						handler: "CacheFirst",
 						options: {
 							cacheName: "static-resources",
@@ -27,8 +38,7 @@ export default defineConfig({
 					},
 				],
 				navigateFallback: "/diablo_web_simple/index.html",
-				navigateFallbackAllowlist: [/^(?!\/__).*/],
-				maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+				navigateFallbackAllowlist: [/^(?!.*\.pdf$).*$/],
 			},
 		}),
 	],
