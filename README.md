@@ -50,7 +50,7 @@ This project also builds on the work of [devilution](https://github.com/diasurgi
 
 ### Prerequisites
 
-- Node.js (v22 or later)
+- Node.js (v20 or later)
 - npm
 
 ### Installation
