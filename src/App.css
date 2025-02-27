@@ -40,6 +40,10 @@ body,
 	top: 0;
 	right: 0;
 	bottom: 0;
+	background-image: url(diablo.gif);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 @media (max-aspect-ratio: 640/480) {
