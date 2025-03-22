@@ -32,6 +32,10 @@ body,
 	height: auto;
 	left: calc(50% - 200vh / 3);
 	width: calc(400vh / 3);
+	background-image: url(/diablo.gif);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .app__body .app__inner {
@@ -40,10 +44,6 @@ body,
 	top: 0;
 	right: 0;
 	bottom: 0;
-	background-image: url(/diablo.gif);
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center;
 }
 
 @media (max-aspect-ratio: 640/480) {
